@@ -38,13 +38,18 @@ while x == 1:
     if cmd == "e":
         message = input("Message: ")
         key = input("Key: ")
-        messagenumber = message.count()
-        keynumber = key.count()
+        messagenumber = len(message)
+        keynumber = len(key)
         if messagenumber == keynumber: 
             x = 1
-        else:
-            cyc(key, messagenumber)
-            print(key)
+            
+        elif messagenumber > keynumber:
+            newkey = key * messagenumber
+            newkeytwo = newkey[0:messagenumber]
+            print(newkeytwo)
+        else: 
+            memes = key[0:messagenumber]
+            print(memes)
     elif cmd == "d":
         print("g")
 

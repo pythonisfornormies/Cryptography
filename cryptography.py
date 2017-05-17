@@ -23,14 +23,9 @@ Enter e to encrypt, d to decrypt, or q to quit: q
 Goodbye!
 
 """
-def cyc(sg, lngth):
-    a, b = 1, sg
-    while len(sg) < lngth:
-        sg += b[a - 1]
-        a = (a+1)%len(b)
-    return sg
+def encrypt(x):
+    associations = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 .,:;'\"/\\<>(){}[]-=_+?!"
     
-associations = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 .,:;'\"/\\<>(){}[]-=_+?!"
 x = 1
 while x == 1:
     cmd = input("Enter e to encrypt, d to decrypt, or q to quit: ")
@@ -42,14 +37,21 @@ while x == 1:
         keynumber = len(key)
         if messagenumber == keynumber: 
             x = 1
-            
+            encrypt(message)
+            print(message)
         elif messagenumber > keynumber:
             newkey = key * messagenumber
             newkeytwo = newkey[0:messagenumber]
             print(newkeytwo)
+            x = 1
+            encrypt(message)
+            print(message)
         else: 
             memes = key[0:messagenumber]
             print(memes)
+            x = 1
+            encrypt(message)
+            print(message)
     elif cmd == "d":
         print("g")
 

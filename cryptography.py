@@ -25,7 +25,10 @@ Goodbye!
 """
 def encrypt(x):
     associations = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 .,:;'\"/\\<>(){}[]-=_+?!"
-
+    xspaced = " ".join(x)
+    xlist = list(xspaced)
+    for y in xlist:
+        
 def decrypt(x):
     associations = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 .,:;'\"/\\<>(){}[]-=_+?!"
     

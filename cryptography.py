@@ -1,7 +1,7 @@
 """
 cryptography.py
-Author: <your name here>
-Credit: <list sources used, if any>
+Author: Kai Darrow
+Credit: http://stackoverflow.com/questions/3391076/repeat-string-to-certain-length/3391142
 
 Assignment:
 
@@ -23,20 +23,28 @@ Enter e to encrypt, d to decrypt, or q to quit: q
 Goodbye!
 
 """
+def cyc(sg, lngth):
+    a, b = 1, sg
+    while len(sg) < lngth:
+        sg += b[a - 1]
+        a = (a+1)%len(b)
+    return sg
+    
 associations = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 .,:;'\"/\\<>(){}[]-=_+?!"
 x = 1
 while x == 1:
     cmd = input("Enter e to encrypt, d to decrypt, or q to quit: ")
     
     if cmd == "e":
-        message = input(Message: )
-        key = input(Key: )
+        message = input("Message: ")
+        key = input("Key: ")
         messagenumber = message.count()
         keynumber = key.count()
         if messagenumber == keynumber: 
             x = 1
         else:
-            
+            cyc(key, messagenumber)
+            print(key)
     elif cmd == "d":
         print("g")
 

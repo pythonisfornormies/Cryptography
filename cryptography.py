@@ -53,7 +53,27 @@ while x == 1:
             encrypt(message)
             print(message)
     elif cmd == "d":
-        print("g")
+        message = input("Message: ")
+        key = input("Key: ")
+        messagenumber = len(message)
+        keynumber = len(key)
+        if messagenumber == keynumber: 
+            x = 1
+            decrypt(message)
+            print(message)
+        elif messagenumber > keynumber:
+            newkey = key * messagenumber
+            newkeytwo = newkey[0:messagenumber]
+            print(newkeytwo)
+            x = 1
+            decrypt(message)
+            print(message)
+        else: 
+            memes = key[0:messagenumber]
+            print(memes)
+            x = 1
+            decrypt(message)
+            print(message)
 
     elif cmd == "q":
         x = 0

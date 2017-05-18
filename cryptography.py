@@ -1,7 +1,7 @@
 """
 cryptography.py
 Author: Kai Darrow
-Credit: http://stackoverflow.com/questions/3391076/repeat-string-to-certain-length/3391142
+Credit: http://stackoverflow.com/questions/3391076/repeat-string-to-certain-length/3391142, Noah Cowey
 
 Assignment:
 

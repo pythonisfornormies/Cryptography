@@ -23,15 +23,35 @@ Enter e to encrypt, d to decrypt, or q to quit: q
 Goodbye!
 
 """
-def encrypt(x):
+def encrypt(x, y):
     associations = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 .,:;'\"/\\<>(){}[]-=_+?!"
-    xspaced = " ".join(x)
-    xlist = list(xspaced)
-    for y in xlist:
-        
-def decrypt(x):
-    associations = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 .,:;'\"/\\<>(){}[]-=_+?!"
+    output = []
+    keyoutput = []
+    for c in x:
+        output.append(associations.find(c))
+    for c in y:
+        keyoutput.append(associations.find(c))
+    for i in range(0,len(y)):
+        output[i] = (output[i] + keyoutput[i])%len(associations)
+    encrypted = []
+    for n in output:
+        encrypted.append(associations[n])
+    return("".join(encrypted))
     
+def decrypt(x, y):
+    associations = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 .,:;'\"/\\<>(){}[]-=_+?!"
+    output = []
+    keyoutput = []
+    for c in x:
+        output.append(associations.find(c))
+    for c in y:
+        keyoutput.append(associations.find(c))
+    for i in range(0,len(y)):
+        output[i] = (output[i] - keyoutput[i])%len(associations)
+    encrypted = []
+    for n in output:
+        encrypted.append(associations[n])
+    return("".join(encrypted))
     
 x = 1
 while x == 1:
@@ -44,21 +64,17 @@ while x == 1:
         keynumber = len(key)
         if messagenumber == keynumber: 
             x = 1
-            encrypt(message)
-            print(message)
+            print(encrypt(message, key))
         elif messagenumber > keynumber:
             newkey = key * messagenumber
             newkeytwo = newkey[0:messagenumber]
-            print(newkeytwo)
             x = 1
-            encrypt(message)
-            print(message)
+            print(encrypt(message, newkeytwo))
         else: 
             memes = key[0:messagenumber]
             print(memes)
             x = 1
-            encrypt(message)
-            print(message)
+            print(encrypt(message,memes))
     elif cmd == "d":
         message = input("Message: ")
         key = input("Key: ")
@@ -66,21 +82,16 @@ while x == 1:
         keynumber = len(key)
         if messagenumber == keynumber: 
             x = 1
-            decrypt(message)
-            print(message)
+            print(decrypt(message,key))
         elif messagenumber > keynumber:
             newkey = key * messagenumber
             newkeytwo = newkey[0:messagenumber]
-            print(newkeytwo)
+            print(decrypt(message,newkeytwo))
             x = 1
-            decrypt(message)
-            print(message)
         else: 
             memes = key[0:messagenumber]
-            print(memes)
             x = 1
-            decrypt(message)
-            print(message)
+            print(decrypt(message,memes))
 
     elif cmd == "q":
         x = 0
